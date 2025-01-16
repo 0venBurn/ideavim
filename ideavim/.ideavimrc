@@ -1,0 +1,140 @@
+
+" .ideavimrc - Updated to match Neovim config
+
+"" Base Settings
+"" ========================================================
+
+set scrolloff=10
+set relativenumber
+set showmode
+set showcmd
+
+set smartcase
+set incsearch
+set visualbell
+
+" Use system clipboard
+set clipboard+=unnamed
+
+let mapleader = " "
+
+"" Plugin Settings
+"" ========================================================
+
+set surround
+set highlightedyank
+set sneak
+set nerdtree
+set easymotion
+set which-key
+set multiple-cursors
+
+"" Key mappings
+"" ========================================================
+
+" General keymaps
+inoremap jk <Esc>
+nnoremap <leader>wq :wq<CR>
+nnoremap <leader>qq :q!<CR>
+nnoremap <leader>ww :w<CR>
+nnoremap gx :!open <c-r><c-a><CR>
+
+" Move lines
+nnoremap J :move .+1<CR>==
+nnoremap K :move .-2<CR>==
+vnoremap K :move '<-2<CR>gv=gv
+vnoremap J :move '>+1<CR>gv=gv
+
+" Window splits
+nnoremap <leader>sv :action SplitVertically<CR>
+nnoremap <leader>sh :action SplitHorizontally<CR>
+nnoremap <leader>se <C-w>=
+nnoremap <leader>sx :action CloseContent<CR>
+nnoremap <leader>sj :action StretchSplitToBottom<CR>
+nnoremap <leader>sk :action StretchSplitToTop<CR>
+nnoremap <leader>sl :action StretchSplitToRight<CR>
+nnoremap <leader>sh :action StretchSplitToLeft<CR>
+
+" Window navigation
+nnoremap <C-h> :action PrevSplitter<CR>
+nnoremap <C-l> :action NextSplitter<CR>
+nnoremap <C-k> :action PrevSplitter<CR>
+nnoremap <C-j> :action NextSplitter<CR>
+
+" Tab management
+nnoremap <leader>to :action NewTab<CR>
+nnoremap <leader>tx :action CloseTab<CR>
+nnoremap <leader>tn :action NextTab<CR>
+nnoremap <leader>tp :action PreviousTab<CR>
+
+" Diff keymaps
+nnoremap <leader>cc :action Vcs.Push<CR>
+nnoremap <leader>cn ]c
+nnoremap <leader>cp [c
+
+" File explorer
+nnoremap <leader>ee :NERDTreeToggle<CR>
+
+" Search
+map <Leader>ff <action>(com.mituuz.fuzzier.Fuzzier)
+nnoremap <leader>fg :action FindInPath<CR>
+nnoremap <leader>fb :action RecentFiles<CR>
+nnoremap <leader>fh :action GotoAction<CR>
+nnoremap <leader>fs :action Find<CR>
+nnoremap <leader>fo :action GotoSymbol<CR>
+
+" Git
+nnoremap <leader>gb :action Annotate<CR>
+nnoremap <leader>git :action Git.Menu<CR>
+" LSP-like functionality
+nnoremap <leader>gg :action QuickJavaDoc<CR>
+nnoremap <leader>gd :action GotoDeclaration<CR>
+nnoremap <leader>gD :action GotoTypeDeclaration<CR>
+nnoremap <leader>gi :action GotoImplementation<CR>
+nnoremap <leader>gt :action GotoTest<CR>
+nnoremap <leader>gr :action FindUsages<CR>
+nnoremap <leader>gs :action ParameterInfo<CR>
+nnoremap <leader>rr :action RenameElement<CR>
+nnoremap <leader>gf :action ReformatCode<CR>
+vnoremap <leader>gf :action ReformatCode<CR>
+nnoremap <leader>ga :action ShowIntentionActions<CR>
+nnoremap <leader>gl :action ShowErrorDescription<CR>
+nnoremap <leader>gp :action GotoPreviousError<CR>
+nnoremap <leader>gn :action GotoNextError<CR>
+
+" Debugging
+nnoremap <leader>bb :action ToggleLineBreakpoint<CR>
+nnoremap <leader>bc :action Debugger.AddToWatch<CR>
+nnoremap <leader>br :action Debugger.RemoveAllBreakpointsInFile<CR>
+nnoremap <leader>ba :action ViewBreakpoints<CR>
+nnoremap <leader>dc :action Resume<CR>
+nnoremap <leader>dj :action StepOver<CR>
+nnoremap <leader>dk :action StepInto<CR>
+nnoremap <leader>do :action StepOut<CR>
+nnoremap <leader>dd :action Stop<CR>
+nnoremap <leader>dr :action EvaluateExpression<CR>
+nnoremap <leader>di :action QuickImplementations<CR>
+
+" Additional useful IdeaVim mappings
+nnoremap <leader>ss :action FileStructurePopup<CR>
+nnoremap <leader>rf :action RefactoringMenu<CR>
+nnoremap <leader>fm :action ToggleFullScreen<CR>
+
+" Preserve original mappings
+nnoremap [[ :action MethodUp<CR>
+nnoremap ]] :action MethodDown<CR>
+vnoremap < <gv
+vnoremap > >gv
+nnoremap qj @q
+
+" Comment lines
+map <leader>c <action>(CommentByLineComment)
+
+" Which-key settings (simplified for IdeaVim)
+let g:WhichKeyDesc_leader = "<leader> Leader key"
+let g:WhichKeyDesc_windows = "<leader>s Window splits"
+let g:WhichKeyDesc_tabs = "<leader>t Tab management"
+let g:WhichKeyDesc_file = "<leader>f File operations"
+let g:WhichKeyDesc_git = "<leader>g Git operations"
+let g:WhichKeyDesc_refactor = "<leader>r Refactoring"
+let g:WhichKeyDesc_debug = "<leader>d Debugging"
